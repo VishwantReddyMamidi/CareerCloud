@@ -6,14 +6,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CareerCloud.Pocos
 {
-    [Table("Security_Logins_Roles")]
-   public class SecurityLoginsRolePoco : IPoco
+    [Table("Company_Jobs_Descriptions")]
+   public class CompanyJobDescriptionPoco : IPoco
     {
         [Key]
         public Guid Id { get; set; }
-        public Guid Login { get; set; }
-        public Guid Role { get; set; }
+        public Guid Job { get; set; }
+        [Column("Job_Name")]
+        public string JobName { get; set; }
+        [Column("Job_Descriptions")]
+        public string JobDescriptions { get; set; }
+
         [Column("Time_Stamp")]
         public byte[] TimeStamp { get; set; }
+
     }
 }
