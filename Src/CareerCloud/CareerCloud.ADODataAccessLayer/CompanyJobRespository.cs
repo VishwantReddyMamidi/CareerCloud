@@ -7,9 +7,9 @@ using CareerCloud.Pocos;
 
 namespace CareerCloud.ADODataAccessLayer
 {
-    public class CompanyJobRepository : IDataRepository<CompanyjobPoco>
+    public class CompanyJobRepository : IDataRepository<CompanyJobPoco>
     {
-        public void Add(params CompanyjobPoco[] items)
+        public void Add(params CompanyJobPoco[] items)
         {
             throw new NotImplementedException();
         }
@@ -19,27 +19,27 @@ namespace CareerCloud.ADODataAccessLayer
             throw new NotImplementedException();
         }
 
-        public IList<CompanyjobPoco> GetAll(params Expression<Func<CompanyjobPoco, object>>[] navigationProperties)
+        public IList<CompanyJobPoco> GetAll(params Expression<Func<CompanyJobPoco, object>>[] navigationProperties)
         {
             throw new NotImplementedException();
         }
 
-        public IList<CompanyjobPoco> GetList(Expression<Func<CompanyjobPoco, bool>> where, params Expression<Func<CompanyjobPoco, object>>[] navigationProperties)
+        public IList<CompanyJobPoco> GetList(Expression<Func<CompanyJobPoco, bool>> where, params Expression<Func<CompanyJobPoco, object>>[] navigationProperties)
         {
             throw new NotImplementedException();
         }
 
-        public CompanyjobPoco GetSingle(Expression<Func<CompanyjobPoco, bool>> where, params Expression<Func<CompanyjobPoco, object>>[] navigationProperties)
+        public CompanyJobPoco GetSingle(Expression<Func<CompanyJobPoco, bool>> where, params Expression<Func<CompanyJobPoco, object>>[] navigationProperties)
         {
             throw new NotImplementedException();
         }
 
-        public void Remove(params CompanyjobPoco[] items)
+        public void Remove(params CompanyJobPoco[] items)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(params CompanyjobPoco[] items)
+        public void Update(params CompanyJobPoco[] items)
         {
             throw new NotImplementedException();
         }
