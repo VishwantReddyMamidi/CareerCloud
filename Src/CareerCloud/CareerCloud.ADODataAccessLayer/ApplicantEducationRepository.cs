@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using System.Linq;
 
 namespace CareerCloud.ADODataAccessLayer
 {
@@ -68,7 +69,45 @@ namespace CareerCloud.ADODataAccessLayer
 
         public IList<ApplicantEducationPoco> GetAll(params Expression<Func<ApplicantEducationPoco, object>>[] navigationProperties)
         {
-            throw new NotImplementedException();
+            using (SqlConnection conn = new SqlConnection(_connStr))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = @"SELECT [Id]
+                                  ,[Applicant]
+                                  ,[Major]
+                                  ,[Certificate_Diploma]
+                                  ,[Start_Date]
+                                  ,[Completion_Date]
+                                  ,[Completion_Percent]
+                                  ,[Time_Stamp]
+                                    FROM[dbo].[Applicant_Educations]";
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                ApplicantEducationPoco[] pocos = new ApplicantEducationPoco[500];
+                int index = 0;
+                while (reader.Read())
+                {
+                    ApplicantEducationPoco
+                        poco = new ApplicantEducationPoco();
+
+                    poco.Id = reader.GetGuid(0);
+                    poco.Applicant = reader.GetGuid(1);
+                    poco.Major = reader.GetString(2);
+                    poco.CertificateDiploma = reader.GetString(3);
+                    poco.StartDate = reader.GetDateTime(4);
+                    poco.CompletionDate = reader.GetDateTime(5);
+                    poco.CompletionPercent = reader.GetByte(6);
+                    poco.TimeStamp = (byte[])reader[7];
+
+                    pocos[index] = poco;
+                    index++;
+                }
+                conn.Close();
+            return pocos.Where(a => a != null).ToList();
+
+            }
+            
         }
 
         public IList<ApplicantEducationPoco> GetList(Expression<Func<ApplicantEducationPoco, bool>> where, params Expression<Func<ApplicantEducationPoco, object>>[] navigationProperties)
@@ -78,7 +117,8 @@ namespace CareerCloud.ADODataAccessLayer
 
         public ApplicantEducationPoco GetSingle(Expression<Func<ApplicantEducationPoco, bool>> where, params Expression<Func<ApplicantEducationPoco, object>>[] navigationProperties)
         {
-            throw new NotImplementedException();
+            IQueryable<ApplicantEducationPoco> pocos = GetAll().AsQueryable();
+            return pocos.Where(where).FirstOrDefault();
         }
 
         public void Remove(params ApplicantEducationPoco[] items)
