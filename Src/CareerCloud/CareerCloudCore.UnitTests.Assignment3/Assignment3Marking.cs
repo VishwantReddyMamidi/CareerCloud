@@ -1176,7 +1176,7 @@ namespace CareerCloud.UnitTests.Assignment3
 
         #endregion SecurityRole_Tests
 
-        /*#region SystemCountryCode_Tests
+        #region SystemCountryCode_Tests
 
         [TestMethod]
         public void SystemCountryCode_MethodExists_Get_Test()
@@ -1398,7 +1398,7 @@ namespace CareerCloud.UnitTests.Assignment3
             }
         }
 
-        #endregion SystemLanguageCode_Tests*/
+        #endregion SystemLanguageCode_Tests
 
     }
 }
