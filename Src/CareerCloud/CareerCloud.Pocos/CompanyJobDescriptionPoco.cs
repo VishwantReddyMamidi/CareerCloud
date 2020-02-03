@@ -11,6 +11,7 @@ namespace CareerCloud.Pocos
     {
         [Key]
         public Guid Id { get; set; }
+        [ForeignKey("FK_Company_Jobs_Descriptions_Company_Jobs")]
         public Guid Job { get; set; }
         [Column("Job_Name")]
         public string JobName { get; set; }
@@ -18,7 +19,10 @@ namespace CareerCloud.Pocos
         public string JobDescriptions { get; set; }
 
         [Column("Time_Stamp")]
+        [NotMapped]
         public byte[] TimeStamp { get; set; }
+
+        public virtual CompanyJobPoco CompanyJob { get; set; }
 
     }
 }

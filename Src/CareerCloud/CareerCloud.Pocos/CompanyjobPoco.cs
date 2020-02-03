@@ -11,6 +11,7 @@ namespace CareerCloud.Pocos
     {
         [Key]
         public Guid Id { get; set; }
+        [ForeignKey("FK_Company_Jobs_Company_Profiles")]
         public Guid Company { get; set; }
         [Column("Profile_Created")]
         public DateTime ProfileCreated { get; set; }
@@ -19,6 +20,14 @@ namespace CareerCloud.Pocos
         [Column("Is_Company_Hidden")]
         public bool IsCompanyHidden { get; set; }
         [Column("Time_Stamp")]
+        [NotMapped]
         public byte[] TimeStamp { get; set; }
+
+        public virtual ICollection<ApplicantJobApplicationPoco> ApplicantJobApplications { get; set; }
+        public virtual ICollection<CompanyJobEducationPoco> CompanyJobEducations { get; set; }
+        public virtual ICollection<CompanyJobSkillPoco> companyJobSkills { get; set; }
+        public virtual ICollection<CompanyJobDescriptionPoco> CompanyJobDescriptions { get; set; }
+        public virtual CompanyProfilePoco CompanyProfile { get; set; }
+
     }
 }

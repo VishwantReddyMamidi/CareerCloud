@@ -11,6 +11,7 @@ namespace CareerCloud.Pocos
     {
         [Key]
         public Guid Id { get; set; }
+        [ForeignKey("FK_Applicant_Profiles_Security_Logins")]
         public Guid Login { get; set; }
         [Column("Current_Salary")]
         public decimal? CurrentSalary { get; set; }
@@ -18,7 +19,7 @@ namespace CareerCloud.Pocos
         public decimal? CurrentRate{get;set;}
         
         public string? Currency { get; set; }
-        [Column("Country_Code")]
+        [Column("Country_Code")][ForeignKey("FK_Applicant_Profiles_System_Country_Codes")]
         public string? Country { get; set; }
         [Column("State_Province_Code")]
         public string? Province { get; set; }
@@ -29,6 +30,16 @@ namespace CareerCloud.Pocos
         [Column("Zip_Postal_Code")]
         public string? PostalCode { get; set; }
         [Column("Time_Stamp")]
+        [NotMapped]
         public byte[] TimeStamp { get; set; }
+
+        public virtual ICollection<ApplicantEducationPoco> ApplicantEducations { get; set; }
+        public virtual ICollection<ApplicantJobApplicationPoco> ApplicantJobApplications { get; set; }
+        public virtual ICollection<ApplicantResumePoco> ApplicantResumes { get; set; }
+        public virtual ICollection<ApplicantSkillPoco> ApplicantSkills { get; set; }
+        public virtual ICollection<ApplicantWorkHistoryPoco> applicantWorkHistories { get; set; }
+        public virtual SecurityLoginPoco SecurityLogin { get; set; }
+        public virtual SystemCountryCodePoco SystemCountryCode { get; set; }
+        
     }
 }
