@@ -23,17 +23,23 @@ namespace CareerCloud.BusinessLogicLayer
                     exceptions.Add(new ValidationException(600, "websites field cannot be empty"));
 
                 }
-                else if (!Regex.IsMatch(poco.CompanyWebsite, @"\A(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)(com|biz|ca))\z",RegexOptions.IgnoreCase));
+                //else if (!Regex.IsMatch(poco.CompanyWebsite, @"\A(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)(com|biz|ca))\z", RegexOptions.IgnoreCase))
+                //{
+                //    exceptions.Add(new ValidationException(600, "websites must end with the following extensions – .ca,.com,.biz"));
+                //}
+
+                else if (!Regex.IsMatch(poco.CompanyWebsite, @"\A(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*.(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)(com|biz|ca))\z", RegexOptions.IgnoreCase))
                 {
                     exceptions.Add(new ValidationException(600, "websites must end with the following extensions – .ca,.com,.biz"));
                 }
+
                 if (string.IsNullOrEmpty(poco.ContactPhone))
                 {
                     exceptions.Add(new ValidationException(601, "contact phone field cannot be empty"));
 
                 }
 
-                else if (!Regex.IsMatch(poco.ContactPhone, @"\A(?:(416)\-{1})(?:[0-9]{3}\-{1})(?:[0-9]{4})\z", RegexOptions.IgnoreCase));
+                else if (!Regex.IsMatch(poco.ContactPhone, @"\A(?:(416|999)\-{1})+(?:[0-9]{3}\-{1})+(?:[0-9]{4})\z", RegexOptions.IgnoreCase))
                 {
                     exceptions.Add(new ValidationException(601, "contact number should match the pattern xxx-xxx-xxxx"));
                 }
