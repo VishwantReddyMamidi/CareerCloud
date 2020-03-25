@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -20,6 +20,10 @@
     <None Remove="Protos\CompanyProfile.proto" />
     <None Remove="Protos\SecurityLogin.proto" />
     <None Remove="Protos\SecurityLoginsLog.proto" />
+    <None Remove="Protos\SecurityLoginsRole.proto" />
+    <None Remove="Protos\SecurityRole.proto" />
+    <None Remove="Protos\SystemCountryCode.proto" />
+    <None Remove="Protos\SystemLanguageCode.proto" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,9 +40,12 @@
     <Protobuf Include="Protos\CompanyJobSkill.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\CompanyLocation.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\CompanyProfile.proto" GrpcServices="Server" />
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\SecurityLogin.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\SecurityLoginsLog.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\SecurityLoginsRole.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\SecurityRole.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\SystemCountryCode.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\SystemLanguageCode.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
